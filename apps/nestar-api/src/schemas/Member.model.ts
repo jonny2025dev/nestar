@@ -91,6 +91,7 @@ const MemberSchema = new Schema({
     default: 0,
   },
   deletedAt: {
+    
     type: Date,
   },
 },
