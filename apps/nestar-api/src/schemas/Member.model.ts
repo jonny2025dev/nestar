@@ -34,7 +34,6 @@ const MemberSchema = new Schema({
   },
   memberFullName: {
     type: String,
-    required: true,
   },
   memberImage: {
     type: String,
