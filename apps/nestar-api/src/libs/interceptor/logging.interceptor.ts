@@ -18,7 +18,7 @@ import {
       const requestType = context.getType<GqlContextType>();
   
       if (requestType === 'http') {
-        // Develop if needed!
+        /** Develop if needed! */
       } else if (requestType === 'graphql') {
         /** (1) Print Request */
         const gqlContext = GqlExecutionContext.create(context);
