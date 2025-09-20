@@ -15,6 +15,9 @@
 //   exports: [AuthService],
 // })
 // export class AuthModule {}
+
+
+
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { HttpModule } from '@nestjs/axios';
@@ -23,8 +26,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
     HttpModule,
+    ConfigModule.forRoot({ isGlobal: true }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
