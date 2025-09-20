@@ -3,7 +3,7 @@ import { MemberService } from './member.service';
 import { LoginInput, MemberInput } from '../../libs/dto/member/member.input';
 import { Member } from '../../libs/dto/member/member';
 
-@Resolver(() => Member)
+@Resolver() 
 export class MemberResolver {
   constructor(private readonly memberService: MemberService) {}
 
@@ -30,4 +30,18 @@ export class MemberResolver {
     console.log('Query: getMember');
     return this.memberService.getMember();
   }
+
+  // Authorization: ADMIN
+@Mutation(() => String)
+public async getAllMembersByAdmin(): Promise<string> {
+  return this.memberService.getAllMembersByAdmin();
+}
+
+// Authorization: ADMIN
+@Mutation(() => String)
+public async updateMemberByAdmin(): Promise<string> {
+  console.log('Mutation: updateMemberByAdmin');
+  return this.memberService.updateMemberByAdmin();
+}
+
 }

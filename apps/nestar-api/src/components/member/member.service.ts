@@ -11,14 +11,13 @@ import { AuthService } from "../auth/auth.service";
 export class MemberService {
   constructor(
     @InjectModel('Member') private readonly memberModel: Model<Member>,
-    private readonly authService: AuthService,
+    private  authService: AuthService,
   ) {}
 
   public async signup(input: MemberInput): Promise<Member> {
     input.memberPassword = await this.authService.hashPassword(input.memberPassword);
     try {
       const result = await this.memberModel.create(input);
-      // Authentication via TOKEN
       result.accessToken = await this.authService.createToken(result);
       return result;
     } catch (err) {
@@ -45,6 +44,7 @@ export class MemberService {
       // TODO: Compare passwords
       const isMatch = await this.authService.comparePasswords(input.memberPassword, response.memberPassword);
       if (!isMatch) throw new InternalServerErrorException(Message.WRONG_PASSWORD);
+      response.accessToken = await this.authService.createToken(response);
     
       return response;
     }
@@ -55,5 +55,13 @@ export class MemberService {
 
   public async getMember(): Promise<string> {
     return 'getMember executed!';
+  }
+
+  public async getAllMembersByAdmin(): Promise<string> {
+    return 'getAllMembersByAdmin executed!';
+  }
+
+  public async updateMemberByAdmin(): Promise<string> {
+    return 'updateMemberByAdmin executed!';
   }
 }
