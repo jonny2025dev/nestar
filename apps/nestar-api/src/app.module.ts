@@ -10,29 +10,26 @@ import { DatabaseModule } from './database/database.module';
 import { T } from './libs/types/common';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(), 
-    GraphQLModule.forRoot({
-    driver: ApolloDriver,
-    ployground:true,
-    uploads: false,
-    autoSchemaFile:true,
-    formatError: (error: T) => {
-      const graphQLFormattedError = {
-        code: error?.extensions?.code,
-        message:
-          error?.extensions?.exception?.response?.message ||
-          error?.extensions?.response?.message ||
-          error?.message,
-      };
-    
-      console.log('GRAPHQL GLOBAL ERR:', graphQLFormattedError);
-      return graphQLFormattedError;
-    },
-  }), 
-  ComponentsModule, DatabaseModule
-],
-  controllers: [AppController],
-  providers: [AppService, AppResolver],
+	imports: [
+		ConfigModule.forRoot(),
+		GraphQLModule.forRoot({
+			driver: ApolloDriver,
+			playground: true,
+			uploades: false,
+			autoSchemaFile: true,
+			formatError: (error: T) => {
+				const graphQLFormattedError = {
+					code: error?.extensions.code,
+					message: error?.extensions?.exception?.message || error?.extensions?.response?.message || error.message,
+				}
+				console.log("GRAPHQL GLOBAL ERR:", graphQLFormattedError);
+				return graphQLFormattedError;
+			}
+		}),
+		ComponentsModule,
+		DatabaseModule,
+	],
+	controllers: [AppController],
+	providers: [AppService, AppResolver],
 })
 export class AppModule {}
