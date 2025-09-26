@@ -7,19 +7,12 @@ import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new LoggingInterceptor());
   app.enableCors({ origin: true, credentials: true });
 
   
-  app.use(
-    graphqlUploadExpress({
-      maxFileSize: 15_000_000,
-      maxFiles: 10,
-    }),
-  );
-
+  app.use(graphqlUploadExpress({maxFileSize: 15_000_000, maxFiles: 10,}),);
   app.use('/uploads', express.static('./uploads'));
 
   await app.listen(process.env.PORT_API ?? 3000);
