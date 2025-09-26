@@ -115,3 +115,7 @@ export class MembersInquiry {
 	@Field(() => MISearch)
 	search: MISearch;
 }
+
+
+
+  
