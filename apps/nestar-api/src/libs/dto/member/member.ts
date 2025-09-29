@@ -81,6 +81,7 @@ export class Member {
 	@Field(() => String, { nullable: true })
 	accessToken?: string;
 }
+
 @ObjectType()
 export class TotalCounter {
 	@Field(() => Int, { nullable: true })
