@@ -9,6 +9,7 @@ import { ComponentsModule } from './components/components.module';
 import { DatabaseModule } from './database/database.module';
 import { T } from './libs/types/common';
 
+
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
@@ -28,6 +29,7 @@ import { T } from './libs/types/common';
 		}),
 		ComponentsModule,
 		DatabaseModule,
+		
 	],
 	controllers: [AppController],
 	providers: [AppService, AppResolver],

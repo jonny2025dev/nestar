@@ -94,6 +94,7 @@ public async updatePropertyByAdmin(@Args('input') input: PropertyUpdate): Promis
   input._id = shapeIntoMongoObjectId(input._id);
   return await this.propertyService.updatePropertyByAdmin(input);
  }
+
  @Roles(MemberType.ADMIN)
  @UseGuards(RolesGuard)
  @Mutation(() => Property)
