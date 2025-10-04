@@ -53,7 +53,10 @@ export class BoardArticleService {
         await this.boardArticleStatsEditor({ _id: articleId, targetKey: 'articleViews', modifier: 1 });
         targetBoardArticle.articleViews++;
       }
-      // meLiked
+        //meLiked
+		const likeInput = {memberId: memberId,likeRefId: articleId,likeGroup: LikeGroup.ARTICLE,}; // meFollowed — bu joyda foydalanuvchi targetMember’ni follow qilganmi yoki yo‘qmi, keyin tekshiriladi.
+    targetBoardArticle.meLiked = await this.likeService.checkLikeExistence(likeInput);
+    
     }
     targetBoardArticle.memberData = await this.memberService.getMember (null, targetBoardArticle.memberId);
     return targetBoardArticle;

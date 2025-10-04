@@ -59,7 +59,10 @@ export class PropertyService {
         targetProperty.propertyViews++;
       }
   
-      // meLiked
+      //meLiked
+		const likeInput = {memberId: memberId,likeRefId: propertyId,likeGroup: LikeGroup.PROPERTY,}; // meFollowed — bu joyda foydalanuvchi targetMember’ni follow qilganmi yoki yo‘qmi, keyin tekshiriladi.
+    targetProperty.meLiked = await this.likeService.checkLikeExistence(likeInput);
+    
     }
   
     targetProperty.memberData = await this.memberService.getMember(null, targetProperty.memberId);

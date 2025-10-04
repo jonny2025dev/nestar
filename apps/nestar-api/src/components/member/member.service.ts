@@ -91,6 +91,9 @@ export class MemberService {
 			}
 		}
 		//meLiked
+		const likeInput = {memberId: memberId,likeRefId: targetId,likeGroup: LikeGroup.MEMBER,}; // meFollowed — bu joyda foydalanuvchi targetMember’ni follow qilganmi yoki yo‘qmi, keyin tekshiriladi.
+		  targetMember.meLiked = await this.likeService.checkLikeExistence(likeInput);
+		  
 		//meFollowed
 		return targetMember;
 	}
