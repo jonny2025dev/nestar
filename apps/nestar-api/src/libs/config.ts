@@ -38,4 +38,23 @@ export const lookupMember = {
 	  as: 'memberData',
 	},
   };
+
+  export const lookupFollowingData = {
+	$lookup: {
+	  from: 'members',        // qaysi kolleksiyadan qo‘shilyapti
+	  localField: 'followingId', // sizning documentdagi maydon
+	  foreignField: '_id',    // members kolleksiyasidagi maydon
+	  as: 'followingData',     // natija saqlanadigan array
+	},
+  };
+  
+  export const lookupFollowerData = {
+	$lookup: {
+	  from: 'members',
+	  localField: 'followerId',
+	  foreignField: '_id',
+	  as: 'followerData',
+	},
+  };
+  
   
