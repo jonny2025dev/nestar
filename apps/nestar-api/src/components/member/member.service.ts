@@ -194,11 +194,15 @@ export class MemberService {
 	public async memberStatsEditor(input: StatisticModifier): Promise<Member> {
 		console.log('executed');
 		const { _id, targetKey, modifier } = input;
-		return await this.memberModel.findOneAndUpdate(
-		   _id , // filter
-		  { $inc: { [targetKey]: modifier } }, // dinamik field update
-		  { new: true } // yangilangan hujjatni qaytaradi
-		).exec();
+	  
+		return await this.memberModel
+		  .findOneAndUpdate(
+			{ _id }, // ✅ bu yerda filter object bo‘lishi kerak
+			{ $inc: { [targetKey]: modifier } }, // dinamik field update
+			{ new: true } // yangilangan hujjatni qaytaradi
+		  )
+		  .exec();
 	  }
+	  
 	  
 }
