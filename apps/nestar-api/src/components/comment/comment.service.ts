@@ -100,7 +100,7 @@ import {  BadRequestException,  Injectable,  InternalServerErrorException } from
               metaCounter: [{ $count: 'total' }],
             },
           },
-        ]).exec();
+        ]);
       
         if (!result.length) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
         return result[0];

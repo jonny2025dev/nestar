@@ -41,4 +41,14 @@ export class MemberUpdate {
     @Field(() => String, { nullable: true })
     memberImage?: string;
 
+    @IsOptional ()
+    @Field (() => String, { nullable: true }) 
+    memberAddress?: string;
+
+    @IsOptional ()
+    @Field (() => String, { nullable: true }) 
+    memberDesc?: string;
+     
+    deletedAt?: Date;
+
 }
